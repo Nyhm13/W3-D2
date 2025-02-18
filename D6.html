@@ -63,7 +63,11 @@
 
     <div>
       <p>Anche questo testo è per gli esercizi</p>
-      <h2 id="changeMyColor" style="color: #ff00d6">
+      <h2
+        id="changeMyColor"
+        style="color: #ff00d6"
+        onclick="changeColorWithRandom()"
+      >
         Apri questa pagina con VSCode per scoprire gli esercizi
       </h2>
     </div>
@@ -83,193 +87,289 @@
       /* ESERCIZIO 1
        Scrivi una funzione per cambiare il titolo della pagina in qualcos'altro
     */
+      
+    const changeTitle = function () {
+        // 1)
+        // const h1 = document.getElementsByTagName('h1')[0]
+        const h1 = document.querySelector('h1')
+        // 2)
+        h1.innerText = "qualcos'altro"
+      }
 
-      const changeTitle = function () {
-      document.getElementsByTagName("h1")[0].innerText ='Ciao Epicoders!'};
-changeTitle()
+      changeTitle()
+
+      // const changeTitle = function () {
+      //   document.getElementsByTagName("h1")[0].innerText = "Ciao Epicoders!";
+      // };
+      // changeTitle();
       /* ESERCIZIO 2
        Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
     */
-
-      const addClassToTitle = function () {
-        document.getElementsByTagName("h1")[0].classList.add('myHeading')
+    const addClassToTitle = function () {
+        // const h1 = document.querySelector('h1')
+        const h1 = document.getElementsByTagName('h1')[0]
+        h1.classList.add('myHeading')
       }
-      addClassToTitle()
+
+
+      // const addClassToTitle = function () {
+      //   document.getElementsByTagName("h1")[0].classList.add("myHeading");
+      // };
+      // addClassToTitle();
 
       /* ESERCIZIO 3
        Scrivi una funzione che cambi il testo dei p figli di un div
       */
 
-      const changePcontent = function () {}
+      const changePcontent = function () {
+        const  arrayOfP = document.querySelectorAll("div p");
+        for (let i =0 ; i<arrayOfP.length; i++){
+          arrayOfP[i].innerText = "cambiato";
+        }
+      };
 
       /* ESERCIZIO 4
        Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
       */
 
       const changeUrls = function () {
-        const allLinks = document.getElementsByTagName ('a')
-        const google = allLinks[0]
-        for (let i =0; i<allLinks.length; i++){
-          if (allLinks[i].href !== "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"){
-            allLinks[i].href = 'https://www.google.com'
+        const allLinks = document.getElementsByTagName("a");
+        const google = allLinks[0];
+        for (let i = 0; i < allLinks.length; i++) {
+          if (
+            allLinks[i].href !==
+            "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+          ) {
+            allLinks[i].href = "https://www.google.com";
           }
         }
-      }
-      changeUrls()
-      //  non capisco perchè mi cambi anche il link del footer
+      };
+      changeUrls();
+      // const changeUrls = function () {
+      //   // const allTheLinks = document.getElementsByTagName('a')
+      //   const allTheLinks = document.querySelectorAll('a')
+      //   for (let i = 0; i < allTheLinks.length; i++) {
+      //     if (
+      //       // se il link non è l'ultimo...
+      //       i !==
+      //       allTheLinks.length - 1
+      //     ) {
+      //       allTheLinks[i].setAttribute('href', 'https://www.google.com')
+      //     }
+      //   }
+      // }
+
+      // changeUrls()
 
       /* ESERCIZIO 5
        Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
     */
 
-      
-
       const addToTheSecond = function () {
-        const list = document.getElementById('secondList')
-        const newLi = document.createElement ('li')
-        newLi.innerText = '4th'
-        list.appendChild (newLi)
-
-      }
-      addToTheSecond()
+        const list = document.getElementById("secondList");
+        const newLi = document.createElement("li");
+        newLi.innerText = "4th";
+        list.appendChild(newLi);
+      };
+      addToTheSecond();
 
       /* ESERCIZIO 6
        Scrivi una funzione che aggiunga un paragrafo al primo div
     */
 
       const addParagraph = function () {
-         const firstDiv = document.querySelector('body div')
-         const newP = document.createElement ('p')
-         newP.innerText = 'io cado malato'
-          firstDiv.appendChild (newP)
-        }
-        addParagraph()
+        const firstDiv = document.querySelector("body div");
+        const newP = document.createElement("p");
+        newP.innerText = "io cado malato";
+        firstDiv.appendChild(newP);
+      };
+      addParagraph();
 
       /* ESERCIZIO 7
        Scrivi una funzione che faccia scomparire la prima lista non ordinata
     */
 
       const hideFirstUl = function () {
-      const toDelete = document.getElementById ('firstList')
-        toDelete.style.display = 'none'
-      }
-      hideFirstUl()
+        const toDelete = document.getElementById("firstList");
+        toDelete.style.display = "none";
+      };
+      hideFirstUl();
 
+      // const hideFirstUl = function () {
+      //   const primaLista = document.getElementById('firstList')
+      //   // 1)
+      //   // primaLista.remove()
+      //   // 2)
+      //   // primaLista.style.display = 'none'
+      //   // 3)
+      //   // primaLista.style.visibility = 'hidden'
+      //   // 4)
+      //   primaLista.style.opacity = 0
+      // }
       /* ESERCIZIO 8 
        Scrivi una funzione che renda verde il background di ogni lista non ordinata
       */
 
       const paintItGreen = function () {
-        const allUl = document.getElementsByTagName ('ul')
-        for (let i=0; i<allUl.length; i ++){
-          allUl[i].style.backgroundColor = 'green'
+        const allUl = document.getElementsByTagName("ul");
+        for (let i = 0; i < allUl.length; i++) {
+          allUl[i].style.backgroundColor = "green";
         }
-      }
-      paintItGreen()
+      };
+      paintItGreen();
 
       /* ESERCIZIO 9
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
       */
 
-      const makeItClickable = function () { 
-        const h1 = document.getElementsByTagName ('h1')[0]
-        h1.addEventListener ('click', function (){
-          h1.innerText = h1.innerText.slice(0, -1)
-        })
-
-      } 
-      makeItClickable()
+      const makeItClickable = function () {
+        const h1 = document.getElementsByTagName("h1")[0];
+        h1.addEventListener("click", function () {
+          h1.innerText = h1.innerText.slice(0, -1);
+        });
+      };
+      makeItClickable();
 
       /* ESERCIZIO 10
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
       */
 
       const revealFooterLink = function () {
-        const footer= document.getElementsByTagName('footer')[0]
-        footer.addEventListener ('click', function (){
-          alert (document.getElementsByTagName('a')[1].href)
-        })
-      }
-      revealFooterLink()
+        const footer = document.getElementsByTagName("footer")[0];
+        footer.addEventListener("click", function () {
+          alert(document.getElementsByTagName("a")[1].href);
+        });
+      };
+      revealFooterLink();
 
       /* ESERCIZIO 11
        Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
     */
+      //    // <table>
+      // //   <tr>
+      // //    <td></td><td></td><td></td><td></td>
+      // //   </tr>
+      // //   <tr>
+      // //    <td></td><td></td><td></td><td></td>
+      // //   </tr>
+      // //   <tr>
+      // //    <td></td><td></td><td></td><td></td>
+      // //   </tr>
+      // //   <tr>
+      // //    <td></td><td></td><td></td><td></td>
+      // //   </tr>
+      // //   <tr>
+      // //    <td></td><td></td><td></td><td></td>
+      // //   </tr>
+      // // </table>
+
+      // const generateTable = function () {
+      //   const tableContainer = document.getElementById('tableArea')
+      //   tableContainer.innerHTML = `
+      //     <table>
+      //       <tr>
+      //         <td>Topo Gigio</td>
+      //         <td></td>
+      //         <td></td>
+      //         <td></td>
+      //       </tr>
+      //       <tr>
+      //         <td>Carletto</td>
+      //         <td></td>
+      //         <td></td>
+      //         <td></td>
+      //       </tr>
+      //       <tr>
+      //         <td>L'uomo Tigre</td>
+      //         <td></td>
+      //         <td></td>
+      //         <td></td>
+      //       </tr>
+      //   </table>
+      //   `
+      // }
+
+      // generateTable()
 
       const generateTable = function () {
-        const tableArea= document.getElementById('tableArea')
-        const table=document.createElement ('table')
-        tableArea.appendChild(table)
-        table.style.border = '4px  solid black'        
-        const tr = document.createElement ('tr')
-        tr.style.backgroundColor = 'orange'      
-        table.appendChild(tr)  
-        const th1 =document.createElement ('th')
-        th1.innerText = 'immagine'   
-        th1.style.border = '3px solid black'     
-        tr.appendChild(th1)
-        const th2 =document.createElement ('th')
-        th2.innerText = 'nome prodotto'
-        th2.style.border = '3px solid black'       
-        tr.appendChild(th2)
-        const th3 = document.createElement ('th')
-        th3.innerText = 'quantità'
-        th3.style.border = '3px solid black'
-        tr.appendChild(th3)
-        const th4 = document.createElement ('th')
-        th4.innerText = 'prezzo'
-        th4.style.border = '3px solid black'
-        tr.appendChild(th4)
-               
-      }
-      generateTable()
-      
+        const tableArea = document.getElementById("tableArea");
+        const table = document.createElement("table");
+        tableArea.appendChild(table);
+        table.style.border = "4px  solid black";
+        const tr = document.createElement("tr");
+        tr.style.backgroundColor = "orange";
+        table.appendChild(tr);
+        const th1 = document.createElement("th");
+        th1.innerText = "immagine";
+        th1.style.border = "3px solid black";
+        tr.appendChild(th1);
+        const th2 = document.createElement("th");
+        th2.innerText = "nome prodotto";
+        th2.style.border = "3px solid black";
+        tr.appendChild(th2);
+        const th3 = document.createElement("th");
+        th3.innerText = "quantità";
+        th3.style.border = "3px solid black";
+        tr.appendChild(th3);
+        const th4 = document.createElement("th");
+        th4.innerText = "prezzo";
+        th4.style.border = "3px solid black";
+        tr.appendChild(th4);
+      };
+      generateTable();
 
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
     */
 
       const addRow = function () {
-        const table = document.querySelector('table')
-        const newTr = document.createElement ('tr')
-        table.appendChild(newTr)
-        const td1 = document.createElement ('td')
-        const img= document.createElement ('img')
-        img.src ='https://media.istockphoto.com/id/1450576005/it/foto/pomodoro-isolato-pomodoro-su-sfondo-bianco-perfetta-vista-laterale-del-pomodoro-ritoccato-con.jpg?s=612x612&w=0&k=20&c=GdN78pdmYLP92FP5wqchtMX7OyQsN4hl2fvIrCXCcc0=' 
-        img.style.width ='50px'      
-        td1.appendChild(img)
-        newTr.appendChild(td1)
-        td1.style.border ='1px solid black'
-        const td2 = document.createElement ('td')
-        td2.innerText = 'Pomodoro'
-        td2.style.border ='1px solid black'
-        td2.style.textAlign = 'center'
-        newTr.appendChild(td2)
-        const td3 = document.createElement ('td')
-        td3.innerText ='1'
-        td3.style.border = '1px solid black'
-        td3.style.textAlign = 'center'
-        newTr.appendChild(td3)
-        const td4 = document.createElement('td')
-        td4.innerText = '1000€'
-        td4.style.border = '1px solid black'
-        td4.style.textAlign ='center'
-        newTr.appendChild(td4)
-      }
-      addRow()
+        const table = document.querySelector("table");
+        const newTr = document.createElement("tr");
+        table.appendChild(newTr);
+        const td1 = document.createElement("td");
+        const img = document.createElement("img");
+        img.src =
+          "https://media.istockphoto.com/id/1450576005/it/foto/pomodoro-isolato-pomodoro-su-sfondo-bianco-perfetta-vista-laterale-del-pomodoro-ritoccato-con.jpg?s=612x612&w=0&k=20&c=GdN78pdmYLP92FP5wqchtMX7OyQsN4hl2fvIrCXCcc0=";
+        img.style.width = "50px";
+        td1.appendChild(img);
+        newTr.appendChild(td1);
+        td1.style.border = "1px solid black";
+        const td2 = document.createElement("td");
+        td2.innerText = "Pomodoro";
+        td2.style.border = "1px solid black";
+        td2.style.textAlign = "center";
+        newTr.appendChild(td2);
+        const td3 = document.createElement("td");
+        td3.innerText = "1";
+        td3.style.border = "1px solid black";
+        td3.style.textAlign = "center";
+        newTr.appendChild(td3);
+        const td4 = document.createElement("td");
+        td4.innerText = "1000€";
+        td4.style.border = "1px solid black";
+        td4.style.textAlign = "center";
+        newTr.appendChild(td4);
+      };
+      addRow();
 
       /* ESERCIZIO 14
       Crea una funzione che nasconda le immagini della tabella quando eseguita
     */
 
-      const hideAllImages = function () {}
+      const hideAllImages = function () {};
 
       /* EXTRA ESERCIZIO 15
       Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
     */
 
-      const changeColorWithRandom = function () {}
+      const changeColorWithRandom = function () {
+        const colorChanger = document.getElementById("changeMyColor");
+
+        const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(
+          Math.random() * 256 )})`;
+        colorChanger.style.color = randomColor;
+      };
     </script>
   </body>
 </html>
